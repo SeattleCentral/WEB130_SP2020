@@ -1,0 +1,15 @@
+{
+  "name": "joshua-assignment02",
+  "version": "1.0.0",
+  "description": "My bio site.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx http-server"
+  },
+  "author": "Joshua Wedekind",
+  "license": "MIT",
+  "dependencies": {
+    "http-server": "^0.12.1"
+  }
+}
