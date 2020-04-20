@@ -1,3 +1,76 @@
-h1 {
-    color: blue;
+body {
+  background-color: #15202b;
+  color: #FFF;
 }
+
+header {
+  display: flex;
+}
+
+p {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+a {
+  color: #0090e4;
+}
+
+.content {
+  background-color: rgba(25, 39, 52, 0.7);
+  margin: 20px auto;
+  max-width: 900px;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+#profile-photo {
+  padding: 20px;
+}
+#profile-photo img {
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+}
+
+#header-title {
+  padding: 20px;
+}
+#header-title h1 {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: 100;
+  margin: 5px 0 15px;
+}
+#header-title h2 {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 100;
+  font-style: italic;
+}
+
+section h1 {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: 100;
+  text-align: center;
+  text-decoration: underline;
+}
+section article {
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+section article:last-child {
+  border-bottom: none;
+}
+section article:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+section img {
+  float: left;
+  margin: 4px 20px 8px 0;
+  max-width: 40%;
+  border-radius: 4px;
+}
+
+/*# sourceMappingURL=app.css.map */
