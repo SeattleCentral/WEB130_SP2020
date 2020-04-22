@@ -1,0 +1,19 @@
+$a: blue;
+
+body {
+    background-color: $a;
+}
+
+a {
+    color: $a
+}
+
+div {
+    color: yellow;
+    a {
+        text-decoration: none;
+    }
+    &:hover {
+        color: blue;
+    }
+}

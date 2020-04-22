@@ -1,0 +1,19 @@
+body {
+  background-color: blue;
+}
+
+a {
+  color: blue;
+}
+
+div {
+  color: yellow;
+}
+div a {
+  text-decoration: none;
+}
+div:hover {
+  color: blue;
+}
+
+/*# sourceMappingURL=app.css.map */
