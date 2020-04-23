@@ -68,9 +68,12 @@ section article:after {
 }
 section img {
   float: left;
-  margin: 4px 20px 8px 0;
+  margin: 4px 20px 0 0;
   max-width: 40%;
   border-radius: 4px;
+}
+section ul {
+  float: left;
 }
 
 /*# sourceMappingURL=app.css.map */

@@ -1,0 +1,16 @@
+// Mixin with a Parameter
+@mixin fancyButton($baseColor) {
+    background-color: $baseColor;
+    border: 2px solid darken($baseColor, 15%);
+    &:hover {
+        background-color: lighten($baseColor, 10%);
+    }
+}
+
+button.purple {
+    @include fancyButton(purple);
+}
+
+button.blue {
+    @include fancyButton(blue);
+}

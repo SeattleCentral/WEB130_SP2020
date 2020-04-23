@@ -1,3 +1,5 @@
+@import 'buttons';
+
 $a: blue;
 
 body {
@@ -17,3 +19,22 @@ div {
         color: blue;
     }
 }
+
+// Simple Mixin Demonstration.
+@mixin fancy {
+    color: purple;
+    font-style: italic;
+    &:hover {
+        text-decoration: dashed;
+    }
+}
+
+h1.fancy {
+    @include fancy;
+}
+
+p.fancy {
+    @include fancy;
+    font-size: 18px;
+}
+

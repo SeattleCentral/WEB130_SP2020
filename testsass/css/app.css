@@ -1,3 +1,19 @@
+button.purple {
+  background-color: purple;
+  border: 2px solid #340034;
+}
+button.purple:hover {
+  background-color: #b300b3;
+}
+
+button.blue {
+  background-color: blue;
+  border: 2px solid #0000b3;
+}
+button.blue:hover {
+  background-color: #3333ff;
+}
+
 body {
   background-color: blue;
 }
@@ -14,6 +30,23 @@ div a {
 }
 div:hover {
   color: blue;
+}
+
+h1.fancy {
+  color: purple;
+  font-style: italic;
+}
+h1.fancy:hover {
+  text-decoration: dashed;
+}
+
+p.fancy {
+  color: purple;
+  font-style: italic;
+  font-size: 18px;
+}
+p.fancy:hover {
+  text-decoration: dashed;
 }
 
 /*# sourceMappingURL=app.css.map */
