@@ -1,5 +1,16 @@
+@import 'size';
+
 @media screen and (min-width: 640px) and (max-width: 1024px) {
     h1 {
         color: pink;
+    }
+}
+
+article {
+    @include size(small) {
+        column-count: 1;
+    }
+    @include size(medium) {
+        column-count: 2;
     }
 }

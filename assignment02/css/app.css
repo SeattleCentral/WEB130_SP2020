@@ -1,6 +1,23 @@
+/**
+ * Sizes
+ * ======
+ *  - small: < 40em
+ *  - medium: 40em < 64em
+ *  - large: 64em and greater
+ */
 @media screen and (min-width: 640px) and (max-width: 1024px) {
   h1 {
     color: pink;
+  }
+}
+@media screen and (max-width: 39.99em) {
+  article {
+    column-count: 1;
+  }
+}
+@media screen and (min-width: 40em) and (max-width: 63.99em) {
+  article {
+    column-count: 2;
   }
 }
 
