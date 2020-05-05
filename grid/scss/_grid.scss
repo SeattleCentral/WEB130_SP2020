@@ -1,10 +1,10 @@
 @import 'size';
 
-// 4 column grid
+// 12 column grid
 @mixin grid($size, $cols) {
     display: block;
     float: left;
     @include size($size) {
-        width: percentage($cols / 4);  // if $cols == 1, 25%
+        width: percentage($cols / 12);  // if $cols == 3, 25%
     }
 }

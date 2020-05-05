@@ -10,6 +10,7 @@
   "author": "Joshua Wedekind",
   "license": "MIT",
   "dependencies": {
+    "bootstrap": "^4.4.1",
     "http-server": "^0.12.1"
   }
 }

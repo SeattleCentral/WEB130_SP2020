@@ -1,17 +1,21 @@
 /**
  * Sizes
  * ======
- *  - small: < 40em
- *  - medium: 40em < 64em
- *  - large: 64em and greater
+ *  - sm: < 40em
+ *  - md: 40em < 64em
+ *  - lg: 64em and greater
  */
 @mixin size($size) {
-    @if $size == small {
+    @if $size == sm {
         @media screen and (max-width: 39.99em) {
             @content;
         }
-    } @else if $size == medium {
+    } @else if $size == md {
         @media screen and (min-width: 40em) and (max-width: 63.99em) {
+            @content;
+        }
+    } @else if $size == lg {
+        @media screen and (min-width: 64em) {
             @content;
         }
     }

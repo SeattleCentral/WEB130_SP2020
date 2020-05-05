@@ -17,37 +17,18 @@
 // 3: | ___   ___   ___ | ___ |
 // 4: | ___   ___   ___   ___ |
 
-.md-1 {
-    @include grid(medium, 1);
+// Refactor to use a 12 column grid...
+@each $size in sm, md, lg {
+    // .sm-1, .sm-2, ..., .md-1, .md-2, ..., .lg-12
+    @for $i from 1 through 12 {
+        // .sm-1, .sm-2, ..., .lg-12
+        .#{$size}-#{$i} {
+            @include grid($size, $i);
+        }
+    }
 }
 
-.md-2 {
-    @include grid(medium, 2);
-}
-
-.md-3 {
-    @include grid(medium, 3);
-}
-
-.md-4 {
-    @include grid(medium, 4);
-}
-
-.sm-1 {
-    @include grid(small, 1);
-}
-
-.sm-2 {
-    @include grid(small, 2);
-}
-
-.sm-3 {
-    @include grid(small, 3);
-}
-
-.sm-4 {
-    @include grid(small, 4);
-}
+// Pyton
 
 article {
     padding: 30px;
