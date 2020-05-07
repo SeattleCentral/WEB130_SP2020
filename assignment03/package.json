@@ -1,0 +1,26 @@
+{
+  "name": "joshua-assignment03",
+  "version": "1.0.0",
+  "description": "responsive nav",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack",
+    "start": "webpack-dev-server"
+  },
+  "author": "Joshua Wedekind",
+  "license": "MIT",
+  "dependencies": {
+    "http-server": "^0.12.1",
+    "lodash": "^4.17.15"
+  },
+  "devDependencies": {
+    "css-loader": "^3.5.3",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  }
+}
