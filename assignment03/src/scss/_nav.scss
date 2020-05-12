@@ -1,0 +1,46 @@
+@import 'colors';
+@import 'size';
+
+nav {
+    background-color: $light-blue;
+    ul {
+        // remove list styles
+        list-style-type: none;
+        padding-inline-start: 0;
+        margin: 0;
+
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        @include size(sm) {
+            flex-direction: column;
+        }
+    }
+    li {
+        display: block;
+        @include size(md) {
+            flex-grow: 1;
+        }
+        a {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            padding: 20px;
+        }
+        .menu-icon {
+            display: block;
+            float: left;
+            width: 34px;
+            height: 22px;
+            background-image: url("/img/Hamburger.png"); 
+        }
+        &.open {
+            .menu-icon {
+                width: 27px;
+                height: 27px;
+                background-image: url("/img/X-Icon.png"); 
+            }
+        }
+    }
+}

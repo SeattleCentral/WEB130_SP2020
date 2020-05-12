@@ -1,5 +1,7 @@
 import _ from 'lodash'
 
+import { sendWarning } from './alert'
+
 function component() {
     const domElement = document.createElement('div')
 
@@ -11,4 +13,6 @@ function component() {
     return domElement
 }
 
-document.body.appendChild(component())
+setTimeout(sendWarning, 1000);
+
+// document.body.appendChild(component())
