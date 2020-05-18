@@ -9,8 +9,8 @@
   },
   "author": "Joshua Wedekind",
   "license": "MIT",
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "serve": "^11.3.0"
-  }
+  },
+  "devDependencies": {}
 }

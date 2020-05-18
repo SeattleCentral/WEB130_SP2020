@@ -10,9 +10,8 @@
   "author": "Joshua Wedekind",
   "license": "MIT",
   "dependencies": {
-    "bootstrap": "^4.4.1"
-  },
-  "devDependencies": {
+    "bootstrap": "^4.4.1",
     "serve": "^11.3.0"
-  }
+  },
+  "devDependencies": {}
 }
