@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx http-server"
+    "start": "npx serve -n -l 8080"
   },
   "author": "Joshua Wedekind",
   "license": "MIT",
-  "dependencies": {
-    "http-server": "^0.12.1"
+  "dependencies": {},
+  "devDependencies": {
+    "serve": "^11.3.0"
   }
 }
