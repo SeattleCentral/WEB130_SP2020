@@ -2,28 +2,47 @@
 @import 'size';
 
 nav {
-    background-color: $light-blue;
     ul {
         // remove list styles
         list-style-type: none;
         padding-inline-start: 0;
         margin: 0;
 
+        background-color: $light-blue;
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
         @include size(sm) {
             flex-direction: column;
         }
+
+        // ul.submenu
+        &.submenu {
+            @include size(md) {
+                position: absolute;
+                width: 100%;
+                left: 0;
+            }
+
+            @include size(lg) {
+                position: absolute;
+                flex-direction: column;
+            }
+        }
     }
     li {
+        position: relative;
         display: block;
         @include size(md) {
+            position: static;
             flex-grow: 1;
         }
         a {
             display: block;
             text-align: center;
+            @include size(lg) {
+                text-align: left;
+            }
             text-decoration: none;
             color: white;
             padding: 20px;
@@ -32,12 +51,12 @@ nav {
             display: block;
             float: left;
             width: 34px;
+            margin-right: -34px;
             height: 22px;
-            background-image: url("/img/Hamburger.png"); 
-        }
-        &.open {
-            .menu-icon {
+            background-image: url("/img/Hamburger.png");
+            &.open {
                 width: 27px;
+                margin-right: -27px;
                 height: 27px;
                 background-image: url("/img/X-Icon.png"); 
             }
