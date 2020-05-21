@@ -1,3 +1,10 @@
+import * as $ from 'jquery';
+
+// The three different ways to import.
+// import * as WhateverYouWant from 'library';
+// import Library from 'library';
+// import { Library } from 'library';
+
 export class Nav {
     constructor() {
         this.submenuOpen = true;
@@ -6,12 +13,12 @@ export class Nav {
     }
 
     setup() {
-        let products = document.getElementById('products');
-        products.addEventListener('click', this.toggleSubmenu);
+        let products = $('#products');
+        products.on('click', this.toggleSubmenu);
         this.toggleSubmenu();
 
-        let mobileMenu = document.getElementById('mobileMenu');
-        mobileMenu.addEventListener('click', this.toggleMobileMenu);
+        let mobileMenu = $('#mobileMenu');
+        mobileMenu.on('click', this.toggleMobileMenu);
         
         // De-expand menu for small screens (< 40em)
         if (window.innerWidth < 640) {
@@ -20,40 +27,33 @@ export class Nav {
     }
 
     toggleSubmenu() {
-        let submenu = document.getElementById('productsSubmenu');
+        let submenu = $('#productsSubmenu');
 
         if (this.submenuOpen) {
             this.submenuOpen = false;
-            submenu.style.display = 'none';
+            submenu.hide();
         } else {
             this.submenuOpen = true;
-            submenu.style.display = 'flex';
+            submenu.show();
         }
     }
 
     toggleMobileMenu() {
-        let navitems = [...document.getElementsByTagName('li')];
-        navitems = navitems.filter(item => !item.classList.contains('mobile-only'));
-        let menuIcon = document.getElementsByClassName('menu-icon')[0];
+        let navitems = $('li').not('.mobile-only');
+        let menuIcon = $('.menu-icon');
 
-        // [ <li>, <li>, <li>, ... ]
-        
         if (this.mobilemenuOpen) {
             this.mobilemenuOpen = false;
-            navitems.map(item => item.style.display = 'none');
-            // Shorthand for:
-            // for (let item of navitems) {
-            //     item.style.display = 'none';
-            // }
+            navitems.hide();
 
             // Toggle icon
-            menuIcon.className = 'menu-icon';
+            menuIcon.removeClass('open');
         } else {
             this.mobilemenuOpen = true;
-            navitems.map(item => item.style.display = 'block');
+            navitems.show();
 
             // Toggle icon
-            menuIcon.className = 'menu-icon open';
+            menuIcon.addClass('open');
         }
     }
 
