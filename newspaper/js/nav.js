@@ -2,8 +2,31 @@ import * as $ from 'jquery'
 
 import { Category } from './categories'
 import { getArticles } from './articles'
+import { renderLoginForm } from './loginForm'
 
-export function renderCategoryDropdown() {
+export function renderNav() {
+    // Home links
+    $('a[href="#Home"]').on('click', function() {
+        getArticles()
+    })
+
+    // Category links
+    renderCategoryDropdown()
+
+    // Editor links
+    $('a[href="#Login"]').on('click', function() {
+        renderLoginForm()
+    })
+
+    // Only applies to Bootstrap navbar. For looks only.
+    $('.nav-link').on('click', function(event) {
+        $('.nav-link').removeClass('active')
+        const thisNavItem = $(event.target)
+        thisNavItem.addClass('active')
+    })
+}
+
+function renderCategoryDropdown() {
     const categoryMenuItems = $('#category-menu-items')
     for (const category of Object.keys(Category)) {
         const categoryItemHtml = `
