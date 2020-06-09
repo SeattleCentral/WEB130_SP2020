@@ -2,7 +2,8 @@ import * as $ from 'jquery'
 
 import { Category } from './categories'
 import { getArticles } from './articles'
-import { renderLoginForm } from './loginForm'
+import { renderLoginForm, logout } from './loginForm'
+import { renderArticleForm } from './articleForm'
 
 export function renderNav() {
     // Home links
@@ -17,6 +18,12 @@ export function renderNav() {
     $('a[href="#Login"]').on('click', function() {
         renderLoginForm()
     })
+    $('a[href="#Logout"]').on('click', function() {
+        logout()
+    })
+    $('a[href="#ArticleForm"]').on('click', function() {
+        renderArticleForm()
+    })
 
     // Only applies to Bootstrap navbar. For looks only.
     $('.nav-link').on('click', function(event) {
@@ -24,6 +31,12 @@ export function renderNav() {
         const thisNavItem = $(event.target)
         thisNavItem.addClass('active')
     })
+
+    // Render logged in user nav if token is set
+    if (sessionStorage.getItem('token')) {
+        $('.auth-user').css('display', 'block')
+        $('.user').css('display', 'none')
+    }
 }
 
 function renderCategoryDropdown() {

@@ -9,6 +9,7 @@ export function renderArticleForm(data = { content: {}}) {
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <form id="article-form">
+                    <input type="hidden" name="id" id="id" value="${data.id || ''}">
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input class="form-control" type="text" name="title" id="title" value="${data.title || ''}">
@@ -33,6 +34,18 @@ export function renderArticleForm(data = { content: {}}) {
 
     CKEDITOR.replace('content_html')
 
+    $('#article-submit').on('click', (event) => {
+        event.preventDefault()
+        const title = $('#title').val()
+        const category = $("#category").val()
+        const content_html = CKEDITOR.instances.content_html.getData()
+        const data = {
+            title,
+            category,
+            content_html
+        }
+        console.log('Submitting article...', data)
+    })
 
     // Form submit event listeners
 }

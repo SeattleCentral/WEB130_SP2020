@@ -1,16 +1,26 @@
 import * as $ from 'jquery'
 import md5 from 'md5'
+import { renderArticleForm } from './articleForm'
+import { getArticles } from './articles'
 
 function login(token) {
     sessionStorage.setItem('token', token)
-    // Render logout button in nav
+    $('.auth-user').css('display', 'block')
+    $('.user').css('display', 'none')
     // Redirect to create new article
+    const baseUrl = window.location.href.split('#')[0]
+    window.location.href = `${baseUrl}#ArticleForm`
+    renderArticleForm()
 }
 
-function logout() {
+export function logout() {
     sessionStorage.removeItem('token')
-    // Render login button in nav
+    $('.auth-user').css('display', 'none')
+    $('.user').css('display', 'block')
     // Redirect to home page
+    const baseUrl = window.location.href.split('#')[0]
+    window.location.href = `${baseUrl}#Home`
+    getArticles()
 }
 
 export function renderLoginForm() {
