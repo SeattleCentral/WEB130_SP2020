@@ -1,4 +1,17 @@
 import * as $ from 'jquery'
+import md5 from 'md5'
+
+function login(token) {
+    sessionStorage.setItem('token', token)
+    // Render logout button in nav
+    // Redirect to create new article
+}
+
+function logout() {
+    sessionStorage.removeItem('token')
+    // Render login button in nav
+    // Redirect to home page
+}
 
 export function renderLoginForm() {
     const content = $('#content')
@@ -25,8 +38,32 @@ export function renderLoginForm() {
 
     $('#login-submit').on('click', function(event) {
         event.preventDefault()
-        const data = $('#login-form').serializeArray()
-        console.log(data)
+        const username = $('#username').val()
+        const password = $('#password').val()
+        const token = btoa(`${username}:${md5(password)}`)
+
+        $.post({
+            url: '/api/login',
+            headers: {
+                'Authorization': `Basic ${token}`
+            },
+            contentType: 'application/json',
+            dataType: 'json'
+        }).then(response => {
+            if (response.status === 'SUCCESS') {
+                login(token)
+            } else {
+                const alertHtml = `
+                    <div class="alert alert-danger alert-dismissable fade show" role="alert">
+                        <strong>Invalid login!</strong> Please check your username and password.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                `
+                content.prepend(alertHtml)
+            }
+        })
 
         // redirect to the article edit page.
     })

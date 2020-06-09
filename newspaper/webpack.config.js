@@ -1,5 +1,7 @@
 const path = require('path')
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
+const { postLogin } = require('./js/api')
+const express = require('express')
 
 module.exports = {
     mode: 'development',
@@ -34,6 +36,10 @@ module.exports = {
         port: 8080,
         host: '0.0.0.0',
         hot: true,
-        disableHostCheck: true
+        disableHostCheck: true,
+        before: (app, server, compiler) => {
+            app.use(express.json())
+            app.post('/api/login', postLogin)
+        }
     }
 }
