@@ -36,7 +36,12 @@ export function renderLoginForm() {
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" name="password" id="password">
+                        <div class="input-group">
+                            <input type="password" class="form-control" name="password" id="password">
+                            <div class="input-group-append">
+                                <button class="input-group-text" id="see-password">👁</button>
+                            </div>
+                        </div>
                     </div>
                     <button id="login-submit" class="btn btn-primary" type="submit">Submit</button>
                 </form>
@@ -45,6 +50,16 @@ export function renderLoginForm() {
     `
 
     content.html(loginFormHtml)
+
+    $('#see-password').on('click', event => {
+        event.preventDefault()
+        const password = $('#password')
+        if (password.attr('type') === 'password') {
+            password.attr('type', 'text')
+        } else {
+            password.attr('type', 'password')
+        }
+    })
 
     $('#login-submit').on('click', function(event) {
         event.preventDefault()
