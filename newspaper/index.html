@@ -28,8 +28,14 @@
                         
                     </div>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item user">
                     <a class="nav-link" href="#Login">Editor login</a>
+                </li>
+                <li class="nav-item auth-user">
+                    <a class="nav-link" href="#Logout">Logout</a>
+                </li>
+                <li class="nav-item auth-user">
+                    <a class="nav-link" href="#ArticleForm">Create Article</a>
                 </li>
             </ul>
         </div>
@@ -47,6 +53,47 @@
         </main>
     </div>
     
+    <!-- Future home of the Footer -->
+
+    <!-- Modals -->
+    <div id="create-article-success" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Article Published!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Successfully created and published the article.</p>
+                </div>
+                <div class="modal-footer">
+                    <button id="continue-editing" type="button" class="btn btn-secondary" data-dismiss="modal">Add Another Article</button>
+                    <button id="go-to-home" type="button" class="btn btn-primary">Go to the home page</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="create-article-failure" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Error!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>There was an error creating or publishing your article.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <script src="./node_modules/ckeditor4/ckeditor.js" type="text/javascript"></script>
     <script src="./dist/app.js" type="text/javascript"></script>

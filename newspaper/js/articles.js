@@ -3,9 +3,9 @@ import * as $ from 'jquery'
 const api = 'https://api-us-west-2.graphcms.com/v2/ckag37xtg0gz801xl0w40eaa7/master'
 
 export function getArticles(category) {
-    let filter = ''
+    let filter = '(orderBy: publishedAt_DESC)'
     if (category) {
-        filter = `(where: {category: ${category}})`
+        filter = `(orderBy: publishedAt_DESC, where: {category: ${category}})`
     }
     $.post(api, JSON.stringify({
         operationName: 'GetArticles',
