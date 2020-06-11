@@ -1,6 +1,6 @@
 const path = require('path')
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
-const { postLogin } = require('./js/api')
+const { postLogin, postArticle } = require('./js/api')
 const express = require('express')
 
 module.exports = {
@@ -40,6 +40,7 @@ module.exports = {
         before: (app, server, compiler) => {
             app.use(express.json())
             app.post('/api/login', postLogin)
+            app.post('/api/article', postArticle)
         }
     }
 }

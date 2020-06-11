@@ -44,7 +44,30 @@ export function renderArticleForm(data = { content: {}}) {
             category,
             content_html
         }
+        const token = sessionStorage.getItem('token')
+
         console.log('Submitting article...', data)
+
+        $.post({
+            url: '/api/article',
+            headers: {
+                'Authorization': `Basic ${token}`
+            },
+            contentType: 'application/json',
+            dataType: 'json',
+            data: JSON.stringify(data)
+        }).then(response => {
+            if (response.status === 'SUCCESS') {
+                $('#create-article-success').modal('show')
+                $('#continue-editing').on('click', event => {
+                    document.getElementById('article-form').reset()
+                })
+            } else {
+                $('#create-article-failure').modal('show')
+            }
+        }).fail(error => {
+            $('#create-article-failure').modal('show')
+        })
     })
 
     // Form submit event listeners
