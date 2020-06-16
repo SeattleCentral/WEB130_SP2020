@@ -20,16 +20,9 @@ let id
 if (page && page.startsWith('Article_')) {
     id = page.split('_')[1]
     page = 'Article'
-    console.log('Page', page)
-    console.log('Id', id)
 }
 
-console.log('Page', page)
-console.log('Id', id)
-
 console.log('Rendering page...', page)
-
-
 
 switch (page) {
     case 'Home':

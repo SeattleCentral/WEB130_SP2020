@@ -2,11 +2,12 @@
   "name": "joshua-newspaper",
   "version": "1.0.0",
   "description": "Newspaper Final",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack",
-    "start": "webpack-dev-server"
+    "devstart": "webpack-dev-server",
+    "start": "node server.js"
   },
   "author": "Joshua Wedekind",
   "license": "MIT",

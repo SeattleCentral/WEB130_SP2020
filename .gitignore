@@ -4,4 +4,5 @@ dist/
 testwebpack
 testjs
 testnewspaper
+depnewspaper
 .secret.js
