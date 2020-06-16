@@ -1,6 +1,7 @@
 import * as $ from 'jquery'
 
 import { Category } from './categories'
+import { getArticles } from './articles'
 
 export function renderArticleForm(data = { content: {}}) {
     const content = $('#content')
@@ -61,6 +62,10 @@ export function renderArticleForm(data = { content: {}}) {
                 $('#create-article-success').modal('show')
                 $('#continue-editing').on('click', event => {
                     document.getElementById('article-form').reset()
+                    CKEDITOR.instances.content_html.setData('')
+                })
+                $('#go-to-home').on('click', event => {
+                    getArticles()
                 })
             } else {
                 $('#create-article-failure').modal('show')

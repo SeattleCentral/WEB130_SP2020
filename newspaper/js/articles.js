@@ -12,6 +12,7 @@ export function getArticles(category) {
         query: `
         query GetArticles {
             articles${filter} {
+                id
                 title
                 content {
                     html
@@ -36,12 +37,13 @@ export function getArticles(category) {
             }
             
             articleListHtml += `
-                <article class="col">
+                <article class="col list">
                     <h3>${article.title}</h3>
-                    <small>Published: ${article.publishedAt}</small
+                    <small>Published: ${article.publishedAt}</small>
                     <section>
                         ${article.content.html}
                     </section>
+                    <a class="article-link" href="#Article_${article.id}">Read more...</a>
                 </article>
             `
         })
@@ -49,5 +51,52 @@ export function getArticles(category) {
         articleListHtml += '</div>'
 
         content.html(articleListHtml)
+
+        $('.article-link').on('click', (event) => {
+            const link = $(event.target)
+            const id = link.attr('href').split('_')[1]
+            getArticle(id)
+        })
+    })
+}
+
+export function getArticle(id) {
+    $.post(api, JSON.stringify({
+        operationName: 'GetArticle',
+        query: `
+        query GetArticle($id: ID) {
+            article(where: {id: $id}) {
+                id
+                title
+                content {
+                    html
+                }
+                category
+                publishedAt
+            }
+        }`,
+        variables: {
+            id: id
+        }
+    })).then(function(response) {
+        const article = response.data.article
+        const content = $('#content')
+
+        // Print to console for debugging.
+        console.log(article);
+
+        const articleHtml = `
+            <div class="row">
+                <article class="col">
+                    <h2>${article.title}</h3>
+                    <small>Published: ${article.publishedAt}</small>
+                    <section>
+                        ${article.content.html}
+                    </section>
+                </article>
+            </div>
+        `
+
+        content.html(articleHtml)
     })
 }
