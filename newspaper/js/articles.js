@@ -22,9 +22,8 @@ export function getArticles(category) {
             }
         }`,
         variables: null
-    })).then(function(response) {
+    })).then(function (response) {
         const articles = response.data.articles
-        const content = $('#content')
 
         // Print to console for debugging.
         console.log(articles);
@@ -32,25 +31,40 @@ export function getArticles(category) {
         let articleListHtml = '<div class="row">'
 
         articles.forEach((article, index) => {
-            if (index % 3 === 0) {
-                articleListHtml += '</div><div class="row">'
+            let colNumber = 4
+            if (index === 0) {
+                colNumber = 8
             }
-            
+            const date = new Date(article.publishedAt)
+            const dateString = `
+                ${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}
+                at ${date.getHours()}:${date.getMinutes()}
+            `
             articleListHtml += `
-                <article class="col list">
-                    <h3>${article.title}</h3>
-                    <small>Published: ${article.publishedAt}</small>
-                    <section>
-                        ${article.content.html}
-                    </section>
-                    <a class="article-link" href="#Article_${article.id}">Read more...</a>
+                <article class="col-lg-${colNumber} list">
+                    <div>
+                        <section>
+                            <h3>${article.title}</h3>
+                            <small>Published: ${dateString}</small>
+                        
+                            ${article.content.html}
+                        </section>
+                        <a class="article-link" href="#Article_${article.id}">Read more...</a>
+                    </div>
                 </article>
             `
         })
 
         articleListHtml += '</div>'
 
+        const content = $('#content')
         content.html(articleListHtml)
+        const title = $('#page-title')
+        if (category) {
+            title.html(`${category} Articles`)
+        } else {
+            title.html('Latest Articles')
+        }
 
         $('.article-link').on('click', (event) => {
             const link = $(event.target)
@@ -65,38 +79,37 @@ export function getArticle(id) {
         operationName: 'GetArticle',
         query: `
         query GetArticle($id: ID) {
-            article(where: {id: $id}) {
-                id
-                title
-                content {
-                    html
+                article(where: { id: $id }) {
+                    id
+                    title
+                    content {
+                        html
+                    }
+                    category
+                    publishedAt
                 }
-                category
-                publishedAt
-            }
-        }`,
+            }`,
         variables: {
             id: id
         }
-    })).then(function(response) {
+    })).then(function (response) {
         const article = response.data.article
-        const content = $('#content')
-
-        // Print to console for debugging.
-        console.log(article);
 
         const articleHtml = `
             <div class="row">
-                <article class="col">
+                <article class="col detail">
                     <h2>${article.title}</h3>
                     <small>Published: ${article.publishedAt}</small>
                     <section>
                         ${article.content.html}
                     </section>
                 </article>
-            </div>
+            </div >
         `
 
+        const content = $('#content')
         content.html(articleHtml)
+        const title = $('#page-title')
+        title.html('Article Details')
     })
 }

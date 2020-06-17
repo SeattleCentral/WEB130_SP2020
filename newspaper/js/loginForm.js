@@ -24,7 +24,6 @@ export function logout() {
 }
 
 export function renderLoginForm() {
-    const content = $('#content')
 
     const loginFormHtml = `
         <div class="row justify-content-center">
@@ -49,7 +48,10 @@ export function renderLoginForm() {
         </div>
     `
 
+    const content = $('#content')
     content.html(loginFormHtml)
+    const title = $('#page-title')
+    title.html('Login Form')
 
     $('#see-password').on('click', event => {
         event.preventDefault()
@@ -61,7 +63,7 @@ export function renderLoginForm() {
         }
     })
 
-    $('#login-submit').on('click', function(event) {
+    $('#login-submit').on('click', function (event) {
         event.preventDefault()
         const username = $('#username').val()
         const password = $('#password').val()

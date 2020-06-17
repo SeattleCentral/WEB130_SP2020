@@ -6,12 +6,11 @@ export { $, popper, bootstrap }
 
 import { renderCats } from './cats'
 import { getArticles, getArticle } from './articles'
-import { renderNav } from './nav'
+import { renderNav, renderSelectedNav } from './nav'
 import { renderLoginForm } from './loginForm'
 import { renderArticleForm } from './articleForm'
 import { Category } from './categories'
 
-// renderCats()
 renderNav()
 
 let page = window.location.href.split('#')[1]
@@ -21,6 +20,8 @@ if (page && page.startsWith('Article_')) {
     id = page.split('_')[1]
     page = 'Article'
 }
+
+renderSelectedNav(`#${page}`)
 
 console.log('Rendering page...', page)
 
@@ -33,7 +34,10 @@ switch (page) {
         break
     case 'Article':
         getArticle(id)
-        break;
+        break
+    case 'Cats':
+        renderCats()
+        break
     case 'ArticleForm':
         // For testing purposes only
         let data = {

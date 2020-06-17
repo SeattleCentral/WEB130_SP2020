@@ -1,0 +1,30 @@
+@import 'size'
+@import 'colors'
+
+article.list
+    & > div
+        height: calc(100% - 24px)
+        padding: 10px 20px
+        border-radius: 4px
+        box-shadow: -2px 2px 5px rgba(10, 10, 10, 0.5)
+        margin: 12px 0
+    section
+        min-height: 200px
+        max-height: 400px
+        padding-bottom: 22px
+        overflow: hidden
+    & div > a
+        display: block
+        width: calc(100% - 70px)
+        line-height: 3
+        position: absolute
+        bottom: 22px
+        background-color: $background
+
+article.detail
+    margin-top: 10px
+    section
+        @include size(lg)
+            column-count: 3
+        @include size(md)
+            column-count: 2

@@ -1,18 +1,24 @@
-$primary: purple
-$dark: #333
+@import 'colors'
 @import '~bootstrap'
+@import 'articles'
+@import 'header'
+@import 'footer'
 
-header
-    margin-top: 20px
-    margin-bottom: 20px
-
-article.list
-    section
-        max-height: 300px
-        overflow: hidden
+body
+    background-color: $background
 
 .user
     display: block
 
 .auth-user
     display: none
+
+div.container
+    min-height: calc(100vh - 258px)
+
+
+#cats
+    margin-top: 15px
+    img
+        max-width: 400px
+        max-height: 400px

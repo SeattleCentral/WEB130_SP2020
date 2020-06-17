@@ -3,8 +3,7 @@ import * as $ from 'jquery'
 import { Category } from './categories'
 import { getArticles } from './articles'
 
-export function renderArticleForm(data = { content: {}}) {
-    const content = $('#content')
+export function renderArticleForm(data = { content: {} }) {
 
     const articleFormHtml = `
         <div class="row justify-content-center">
@@ -31,7 +30,10 @@ export function renderArticleForm(data = { content: {}}) {
         </div>
     `
 
+    const content = $('#content')
     content.html(articleFormHtml)
+    const title = $('#page-title')
+    title.html('Article Form')
 
     CKEDITOR.replace('content_html')
 

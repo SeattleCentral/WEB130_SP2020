@@ -6,3 +6,4 @@ testjs
 testnewspaper
 depnewspaper
 .secret.js
+.env

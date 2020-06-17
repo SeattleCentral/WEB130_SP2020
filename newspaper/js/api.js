@@ -67,10 +67,10 @@ function postArticle(req, res) {
                 variables: variables
             })
         })
-        .then(response => {
-            console.log(response)
+            .then(response => {
+                console.log(response)
 
-            const publishArticleQuery = `
+                const publishArticleQuery = `
                 mutation PublishArticle($id: ID) {
                     __typename
                     publishArticle(where: {id: $id}, to: PUBLISHED) {
@@ -83,39 +83,39 @@ function postArticle(req, res) {
                     }
                 }
             `
-            const variables = {
-                "id": response.data.createArticle.id
-            }
-            
-            // Publish the article we just created.
-            $.post({
-                url: apiUrl,
-                headers: {
-                    'Authorization': `Bearer ${apiKey}`
-                },
-                contentType: 'application/json',
-                dataType: 'json',
-                data: JSON.stringify({
-                    operationName: 'PublishArticle',
-                    query: publishArticleQuery,
-                    variables: variables
+                const variables = {
+                    "id": response.data.createArticle.id
+                }
+
+                // Publish the article we just created.
+                $.post({
+                    url: apiUrl,
+                    headers: {
+                        'Authorization': `Bearer ${apiKey}`
+                    },
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    data: JSON.stringify({
+                        operationName: 'PublishArticle',
+                        query: publishArticleQuery,
+                        variables: variables
+                    })
+                }).then(response => {
+                    res.end(JSON.stringify({
+                        status: 'SUCCESS'
+                    }))
+                }).fail(error => {
+                    res.end(JSON.stringify({
+                        status: 'ERROR',
+                        message: 'Failed to publish article.'
+                    }))
                 })
-            }).then(response => {
-                res.end(JSON.stringify({
-                    status: 'SUCCESS'
-                }))
             }).fail(error => {
                 res.end(JSON.stringify({
                     status: 'ERROR',
-                    message: 'Failed to publish article.'
+                    message: 'Failed to create article.'
                 }))
             })
-        }).fail(error => {
-            res.end(JSON.stringify({
-                status: 'ERROR',
-                message: 'Failed to create article.'
-            }))
-        })
 
     } else {
         res.end(JSON.stringify({
