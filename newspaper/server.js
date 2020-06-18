@@ -11,6 +11,7 @@ app.get('/', (req, res) => {
 
 app.use('/dist', express.static('dist'))
 app.use('/img', express.static('img'))
+app.use('/node_modules', express.static('node_modules'))
 
 app.post('/api/login', postLogin)
 app.post('/api/article', postArticle)
