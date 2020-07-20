@@ -12,7 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "jquery": "^3.5.1",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.19"
   },
   "devDependencies": {
     "css-loader": "^3.5.3",
